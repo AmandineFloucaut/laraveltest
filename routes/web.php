@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,11 @@ use App\Http\Controllers\PostController;
 
 
 
-Route::get('/', [HomeController::class, 'show']);
-Route::get('/posts', [PostController::class, 'postList']);
-Route::get('/posts/{id}', [PostController::class, 'stepList']);
-Route::get('/about', [PostController::class, 'show']);
+Route::get('/', [HomeController::class, 'home']);
+Route::get('/posts', [PostController::class, 'posts']);
+// DOC https://laravel.com/docs/8.x/routing#parameters-regular-expression-constraints
+Route::get('/posts/{id}', [PostController::class, 'onePost'])->whereNumber('id');
+Route::get('/sources', [SourceController::class, 'sources']);
 
 // === Example routes === //
 Route::get('/test', function () {

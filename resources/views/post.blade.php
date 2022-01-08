@@ -2,7 +2,9 @@
 
 @section('content')
 
-    <h1> Comment renvoyer une vue Laravel </h1>
+    <h1> {{ $post }} </h1>
+
+        <p>  </p>
 
 @endsection
-<body>
+
