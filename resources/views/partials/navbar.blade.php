@@ -1,13 +1,13 @@
 <ul>
 
     <li>
-       <a href="{{ url('/') }}">Accueil</a>
+       <a href="{{ route('home') }}">Accueil</a>
     </li>
     <li>
-        <a href="{{ url('/posts') }}">Les étapes</a>
+        <a href="{{ route('tutos') }}">Les étapes</a>
     </li>
     <li>
-        <a href="{{ url('/sources') }}">Les sources</a>
+        <a href="{{ route('sources') }}">Les sources</a>
     </li>
 
 </ul>

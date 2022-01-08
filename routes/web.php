@@ -17,12 +17,12 @@ use App\Http\Controllers\SourceController;
 */
 
 
-
-Route::get('/', [HomeController::class, 'home']);
-Route::get('/posts', [PostController::class, 'posts']);
-// DOC https://laravel.com/docs/8.x/routing#parameters-regular-expression-constraints
+//DOC - Named Routes - https://laravel.com/docs/8.x/routing#named-routes
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/posts', [PostController::class, 'posts'])->name('tutos');
+// DOC - Routes Parameters - https://laravel.com/docs/8.x/routing#parameters-regular-expression-constraints
 Route::get('/posts/{id}', [PostController::class, 'onePost'])->whereNumber('id');
-Route::get('/sources', [SourceController::class, 'sources']);
+Route::get('/sources', [SourceController::class, 'sources'])->name('sources');
 
 // === Example routes === //
 Route::get('/test', function () {

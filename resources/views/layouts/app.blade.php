@@ -7,9 +7,11 @@
     <title>Les sources</title>
 </head>
 <body>
+
+    {{-- //DOC - Includes - https://laravel.com/docs/8.x/blade#including-subviews --}}
     @include('partials.navbar')
 
-    {{-- //DOC - Template Inheritance https://laravel.com/docs/8.x/blade#layouts-using-template-inheritance --}}
+    {{-- //DOC - Template Inheritance - https://laravel.com/docs/8.x/blade#layouts-using-template-inheritance --}}
     @yield('content')
 
 </body>
