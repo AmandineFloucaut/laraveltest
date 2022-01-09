@@ -11,8 +11,9 @@
     {{-- //DOC - Includes - https://laravel.com/docs/8.x/blade#including-subviews --}}
     @include('partials.navbar')
 
-    {{-- //DOC - Template Inheritance - https://laravel.com/docs/8.x/blade#layouts-using-template-inheritance --}}
-    @yield('content')
-
+    <div class="container-fluid">
+        {{-- //DOC - Template Inheritance - https://laravel.com/docs/8.x/blade#layouts-using-template-inheritance --}}
+        @yield('content')
+    </div>
 </body>
 </html>
