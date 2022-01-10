@@ -33,10 +33,8 @@ class PostController extends Controller
         // Example request with where(')
         // $post = Post::where('title', 'Quisquam soluta architecto iure doloremque iure ipsum quam.')->first();
 
-        $post = Post::findOrFail($id);
-
         return view('post', [
-            'post' => $post,
+            'post' => Post::findOrFail($id),
         ]);
     }
 
@@ -55,22 +53,13 @@ class PostController extends Controller
         }
     }
 
-    // public function createPost(Request $request)
-    // {
-    //     $httpMethod = $request->getMethod();
-    //     dump($httpMethod);
-    //     dump($request);
-
-    // }
-
     public function update(Request $request, $id)
     {
 
         $httpMethod = $request->getMethod();
 
-        $post = Post::findOrFail($id);
         if($httpMethod === "POST"){
-            $post->update([
+            Post::findOrFail($id)->update([
                 'title' => $request->title,
                 'content' => $request->content,
             ]);
@@ -78,9 +67,24 @@ class PostController extends Controller
         else if($httpMethod === "GET"){
 
             return view('form-update-post', [
-                'post' => $post,
+                'post' => Post::findOrFail($id),
             ]);
         }
+    }
 
+    public function delete(Request $request, $id)
+    {
+
+        $httpMethod = $request->getMethod();
+
+        if($httpMethod === "POST"){
+            Post::findOrFail($id)->delete();
+        }
+        else if($httpMethod === "GET"){
+
+            return view('form-delete-post', [
+                'post' => Post::findOrFail($id),
+            ]);
+        }
     }
 }
