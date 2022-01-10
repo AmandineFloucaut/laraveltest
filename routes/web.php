@@ -19,9 +19,11 @@ use App\Http\Controllers\SourceController;
 
 //DOC - Named Routes - https://laravel.com/docs/8.x/routing#named-routes
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/posts', [PostController::class, 'posts'])->name('tutos');
+Route::get('/posts', [PostController::class, 'posts'])->name('posts');
+Route::match(['get', 'post'],'/posts/create', [PostController::class, 'create'])->name('posts.create');
 // DOC - Routes Parameters - https://laravel.com/docs/8.x/routing#parameters-regular-expression-constraints
-Route::get('/posts/{id}', [PostController::class, 'onePost'])->whereNumber('id');
+Route::get('/posts/{id}', [PostController::class, 'onePost'])->name('posts.onePost');
+Route::match(['get', 'post'], '/posts/{id}/update', [PostController::class, 'update'])->name('posts.update');
 Route::get('/sources', [SourceController::class, 'sources'])->name('sources');
 
 // === Example routes === //
