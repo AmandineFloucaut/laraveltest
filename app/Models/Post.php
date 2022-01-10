@@ -11,4 +11,10 @@ class Post extends Model
 
     // DOC - Mass Assignments - https://laravel.com/docs/8.x/eloquent#mass-assignment
     protected $fillable = ['title', 'content'];
+
+    // Warning : method name in singular because one post can have several comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

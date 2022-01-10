@@ -21,7 +21,7 @@ class PostController extends Controller
         //     'Les sources'
         // ];
 
-        $posts = Post::orderBy('title')->get();
+        $posts = Post::all();
 
         return $this->show('posts', [
             'posts' => $posts
