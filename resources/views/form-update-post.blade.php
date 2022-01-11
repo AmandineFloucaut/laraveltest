@@ -14,7 +14,7 @@
       <label for="exampleInputPassword1">Contenu</label>
       <textarea type="text" name="content" class="form-control" id="exampleInputPassword1" placeholder="Contenu de l'article" value="">{{$post->content}}</textarea>
     </div>
-    <button type="submit" class="btn btn-primary mt-4">Créer</button>
+    <button type="submit" class="btn btn-primary mt-4">Modifier</button>
   </form>
 
 @endsection

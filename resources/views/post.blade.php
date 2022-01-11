@@ -4,8 +4,12 @@
 
     <h1> {{ $post->title }} </h1>
 
+    <div>
+        <img src="asset('')" alt="">
+        {{ $post->image ? $post->image->path : 'pas d\'image' }}
         <p> {{ $post->content }} </p>
         <span> Créé le {{ $post->created_at->format('d/m/Y') }} </span>
+    </div>
 
     <div>
         <button>

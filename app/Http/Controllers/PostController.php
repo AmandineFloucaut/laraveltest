@@ -9,18 +9,6 @@ class PostController extends Controller
 {
     public function posts()
     {
-        // $posts = [
-        //     'Créer un projet Laravel',
-        //     'Routing',
-        //     'Les contrôlleurs',
-        //     'Utiliser Blade',
-        //     'Compiler les assets (ex installation Tailwind et Bootstrap)',
-        //     'Les migrations',
-        //     'Les factories',
-        //     'Eloquent ORM',
-        //     'Les sources'
-        // ];
-
         $posts = Post::all();
 
         return $this->show('posts', [
@@ -45,10 +33,10 @@ class PostController extends Controller
         if($httpMethod === "POST"){
             Post::create([
                 'title' => $request->title,
-                'content' => $request->content,
+                'cLes controlleursontent' => $request->content,
             ]);
 
-            return redirect()->route('posts');;
+            return redirect()->route('posts');
         }
         else if($httpMethod === "GET"){
             return view('form-create-post');
@@ -61,10 +49,13 @@ class PostController extends Controller
         $httpMethod = $request->getMethod();
 
         if($httpMethod === "POST"){
+
             Post::findOrFail($id)->update([
                 'title' => $request->title,
                 'content' => $request->content,
             ]);
+
+            return redirect()->route('posts.onePost', ['id' => $id]);
         }
         else if($httpMethod === "GET"){
 
@@ -80,7 +71,10 @@ class PostController extends Controller
         $httpMethod = $request->getMethod();
 
         if($httpMethod === "POST"){
+
             Post::findOrFail($id)->delete();
+
+            return redirect()->route('posts');
         }
         else if($httpMethod === "GET"){
 
