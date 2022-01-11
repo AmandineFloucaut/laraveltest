@@ -32,16 +32,16 @@
 
     <h2> Vos commentaires : </h2>
 
-    @forelse($post->comments as $comment)
+    {{-- @forelse($post->comments as $comment)
 
         <p>{{ $comment->content }}</p>
-        <span> Créé le {{ $comment->created_at->format('d/m/Y') }} </span>
+        <span> Créé le {{ $comment->created_at->format('d/m/Y') }} </span> --}}
 
-    @empty
+    {{-- @empty
 
         <p> Aucun commentaire </p>
 
-    @endforelse
+    @endforelse --}}
 
 @endsection
 

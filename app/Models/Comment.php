@@ -17,3 +17,4 @@ class Comment extends Model
         return $this->morphTo();
     }
 }
+
