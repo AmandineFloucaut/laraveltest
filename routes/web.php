@@ -20,16 +20,21 @@ use App\Http\Controllers\SourceController;
 
 //DOC - Named Routes - https://laravel.com/docs/8.x/routing#named-routes
 Route::get('/', [HomeController::class, 'home'])->name('home');
+
 Route::get('/tags', [TagController::class, 'tags'])->name('tags');
+
 Route::get('/posts', [PostController::class, 'posts'])->name('posts');
 Route::match(['get', 'post'],'/posts/create', [PostController::class, 'create'])->name('posts.create');
 // DOC - Routes Parameters - https://laravel.com/docs/8.x/routing#parameters-regular-expression-constraints
 Route::get('/posts/{id}', [PostController::class, 'onePost'])->name('posts.onePost');
 Route::match(['get', 'post'], '/posts/{id}/update', [PostController::class, 'update'])->name('posts.update');
 Route::match(['get', 'post'], '/posts/{id}/delete', [PostController::class, 'delete'])->name('posts.delete');
+
 Route::get('/sources', [SourceController::class, 'sources'])->name('sources');
 
 // === Example routes === //
+Route::get('/polimorphic-registration/{id}', [PostController::class, 'register']);
+
 Route::get('/test', function () {
     return 'Route Test';
 });

@@ -9,6 +9,8 @@ class Comment extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['content'];
+
     /**
      * Get the parent commentable model (post or video).
      */
