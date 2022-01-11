@@ -33,7 +33,7 @@ class PostController extends Controller
         if($httpMethod === "POST"){
             Post::create([
                 'title' => $request->title,
-                'cLes controlleursontent' => $request->content,
+                'content' => $request->content,
             ]);
 
             return redirect()->route('posts');

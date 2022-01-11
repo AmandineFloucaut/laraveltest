@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SourceController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\SourceController;
 
 //DOC - Named Routes - https://laravel.com/docs/8.x/routing#named-routes
 Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/tags', [TagController::class, 'tags'])->name('tags');
 Route::get('/posts', [PostController::class, 'posts'])->name('posts');
 Route::match(['get', 'post'],'/posts/create', [PostController::class, 'create'])->name('posts.create');
 // DOC - Routes Parameters - https://laravel.com/docs/8.x/routing#parameters-regular-expression-constraints

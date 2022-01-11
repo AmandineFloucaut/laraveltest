@@ -4,6 +4,9 @@
        <a href="{{ route('home') }}">Accueil</a>
     </li>
     <li>
+        <a href="{{ route('tags') }}"> Les catégories </a>
+    </li>
+    <li>
         <a href="{{ route('posts') }}">Les étapes</a>
     </li>
     <li>

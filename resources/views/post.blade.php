@@ -4,6 +4,13 @@
 
     <h1> {{ $post->title }} </h1>
 
+    <span> Catégorie : </span>
+        @forelse($post->tags as $tag)
+            <span> {{ $tag->name }} </span>
+        @empty
+            <span> Incoonu </span>
+        @endforelse
+
     <div>
         <img src="asset('')" alt="">
         {{ $post->image ? $post->image->path : 'pas d\'image' }}
@@ -24,10 +31,14 @@
     <h2> Vos commentaires : </h2>
 
     @forelse($post->comments as $comment)
+
         <p>{{ $comment->content }}</p>
         <span> Créé le {{ $comment->created_at->format('d/m/Y') }} </span>
+
     @empty
+
         <p> Aucun commentaire </p>
+
     @endforelse
 
 @endsection
