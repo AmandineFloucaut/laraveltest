@@ -5,8 +5,14 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// @import '~/bootstrap/scss/bootstrap';
+@import "bootstrap";
 
 body {
-    background-color: indianred;
+    background-color: aliceblue;
+
+
+    // .btn {
+    //     margin-top: 2rem;
+    // }
 }

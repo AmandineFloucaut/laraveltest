@@ -47,6 +47,8 @@ class PostController extends Controller
                 'title' => $request->title,
                 'content' => $request->content,
             ]);
+
+            return redirect()->route('posts');;
         }
         else if($httpMethod === "GET"){
             return view('form-create-post');

@@ -12,7 +12,7 @@
 
    <form method="POST" action="{{ route('posts.delete', ['id' => $post->id])}}">
     @csrf
-    <button type="submit" class="btn btn-primary">Je confirme vouloir supprimer l'article ci dessous </button>
+    <button type="submit" class="btn btn-primary mt-4">Je confirme vouloir supprimer l'article ci dessous </button>
   </form>
 
   <a href=""> Supprimer l'article </a>
