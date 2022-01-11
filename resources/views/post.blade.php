@@ -4,12 +4,14 @@
 
     <h1> {{ $post->title }} </h1>
 
-    <span> Catégorie : </span>
-        @forelse($post->tags as $tag)
-            <span> {{ $tag->name }} </span>
-        @empty
-            <span> Incoonu </span>
-        @endforelse
+        <span> Catégorie : </span>
+            @forelse($post->tags as $tag)
+                <span> {{ $tag->name }} </span>
+            @empty
+                <span> Inconnu </span>
+            @endforelse
+
+    <hr>
 
     <div>
         <img src="asset('')" alt="">
