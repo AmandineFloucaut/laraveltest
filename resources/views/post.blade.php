@@ -13,9 +13,14 @@
 
     <hr>
 
+      @if($post->image)
+            <img src="{{ Storage::url($post->image->path) }}" alt="image du post">
+        @else
+            <span> Pas d'image pour ce post </span>
+        @endif
+
+
     <div>
-        <img src="asset('')" alt="">
-        {{ $post->image ? $post->image->path : 'pas d\'image' }}
         <p> {{ $post->content }} </p>
         <span> Créé le {{ $post->created_at->format('d/m/Y') }} </span>
     </div>

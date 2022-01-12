@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Image;
 use App\Models\Video;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -20,9 +22,6 @@ class PostController extends Controller
 
     public function onePost($id)
     {
-        // Example request with where(')
-        // $post = Post::where('title', 'Quisquam soluta architecto iure doloremque iure ipsum quam.')->first();
-
         return view('post', [
             'post' => Post::findOrFail($id),
         ]);
@@ -33,15 +32,18 @@ class PostController extends Controller
 
         if($request->isMethod('POST')){
 
-            $request->validate([
-                'titre' => ['required', 'unique:posts'],
-                'contenu' => 'required',
-            ]);
+            $this->checkValidateForm($request);
 
-            Post::create([
+            $post = Post::create([
                 'title' => $request->title,
                 'content' => $request->content,
             ]);
+
+            // $image = new Image();
+            // $image->path = $path;
+            // $post->image()->save($image);
+            // $this->saveImage();
+            $this->defineAndSaveImagePath($request, $post);
 
             return redirect()->route('posts');
         }
@@ -54,10 +56,20 @@ class PostController extends Controller
     {
         if($request->isMethod('POST')){
 
-            Post::findOrFail($id)->update([
+            $this->checkValidateForm($request);
+
+            $post = Post::findOrFail($id);
+            $post->update([
                 'title' => $request->title,
                 'content' => $request->content,
             ]);
+
+            // $image = new Image();
+            // $image->path = $path;
+            // $post->image()->save($image);
+            // $this->saveImage();
+            
+            $this->defineAndSaveImagePath($request, $post);
 
             return redirect()->route('posts.onePost', ['id' => $id]);
         }
@@ -85,7 +97,38 @@ class PostController extends Controller
         }
     }
 
+    public function checkValidateForm(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+    }
+
+    public function defineAndSaveImagePath(Request $request, $currentPost)
+    {
+        $filename = time() . '.' . $request->image->extension();
+
+        $path = $request->file('image')->storeAs(
+            'images',
+            $filename,
+            'public',
+        );
+
+        $image = new Image();
+        $image->path = $path;
+        $currentPost->image()->save($image);
+    }
+
+    // public function saveImage()
+    // {
+    //     $image = new Image();
+    //     $image->path = $path;
+    //     $post->image()->save($image);
+    // }
+
     /**
+     * Example Polymorphic relation
      * Route : /polimorphic-registration
     //DOC https://laravel.com/docs/8.x/eloquent-relationships#inserting-and-updating-related-models
      */

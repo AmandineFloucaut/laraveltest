@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('posts.create')}}">
+    <form method="POST" action="{{ route('posts.create')}}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="exampleInputEmail1">Titre </label>
@@ -24,6 +24,11 @@
         <div class="form-group">
             <label for="exampleInputPassword1">Contenu</label>
             <textarea type="text" name="content" class="form-control" id="exampleInputPassword1" placeholder="Contenu de l'article"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Enregistrer une image</label>
+            <input class="form-control" type="file" name="image" id="image" accept="image/png, image/jpeg">
         </div>
         <button type="submit" class="btn btn-primary mt-4">Créer</button>
     </form>
