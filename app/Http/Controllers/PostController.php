@@ -32,7 +32,12 @@ class PostController extends Controller
     {
 
         if($request->isMethod('POST')){
-            dd($request->input('title'));
+
+            $request->validate([
+                'titre' => ['required', 'unique:posts'],
+                'contenu' => 'required',
+            ]);
+
             Post::create([
                 'title' => $request->title,
                 'content' => $request->content,
