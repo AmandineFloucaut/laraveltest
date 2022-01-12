@@ -30,9 +30,9 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
-        $httpMethod = $request->getMethod();
 
-        if($httpMethod === "POST"){
+        if($request->isMethod('POST')){
+            dd($request->input('title'));
             Post::create([
                 'title' => $request->title,
                 'content' => $request->content,
@@ -40,17 +40,14 @@ class PostController extends Controller
 
             return redirect()->route('posts');
         }
-        else if($httpMethod === "GET"){
+        else if($request->isMethod('GET')){
             return view('form-create-post');
         }
     }
 
     public function update(Request $request, $id)
     {
-
-        $httpMethod = $request->getMethod();
-
-        if($httpMethod === "POST"){
+        if($request->isMethod('POST')){
 
             Post::findOrFail($id)->update([
                 'title' => $request->title,
@@ -59,7 +56,7 @@ class PostController extends Controller
 
             return redirect()->route('posts.onePost', ['id' => $id]);
         }
-        else if($httpMethod === "GET"){
+        else if($request->isMethod('GET')){
 
             return view('form-update-post', [
                 'post' => Post::findOrFail($id),
@@ -69,16 +66,13 @@ class PostController extends Controller
 
     public function delete(Request $request, $id)
     {
-
-        $httpMethod = $request->getMethod();
-
-        if($httpMethod === "POST"){
+        if($request->isMethod('POST')){
 
             Post::findOrFail($id)->delete();
 
             return redirect()->route('posts');
         }
-        else if($httpMethod === "GET"){
+        else if($request->isMethod('GET')){
 
             return view('form-delete-post', [
                 'post' => Post::findOrFail($id),

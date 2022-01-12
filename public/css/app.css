@@ -11285,3 +11285,6 @@ textarea.form-control-lg {
 body {
   background-color: aliceblue;
 }
+body h1, body .h1 {
+  text-align: center;
+}
